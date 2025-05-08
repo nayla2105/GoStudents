@@ -3,10 +3,20 @@
 use App\Http\Controllers\ListBarangController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\DashboardSiswaController;
+use App\Http\Controllers\DashboardStafController;
+
 
 
 
 Route::get('/', [LandingPageController::class, 'LandingPage'])->name('LandingPage');
+Route::get('/DashboardSiswa', [DashboardSiswaController::class, 'DashboardSiswa'])->name('DashboardSiswa');
+use App\Http\Controllers\LoginController;
+Route::get('/DashboardStaf', [DashboardStafController::class, 'DashboardStaf'])->name('DashboardStaf');
+
+Route::get('/', [LandingPageController::class, 'LandingPage'])->name('LandingPage');
+Route::get('/Login', [LoginController::class, 'Login'])->name('Login');
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 //Use App\Http\Controllers\HomeController;
 // Route::get('/', function () {
 //    return view('welcome');
