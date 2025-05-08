@@ -7,8 +7,15 @@ use App\Http\Controllers\DashboardSiswaController;
 
 
 
+
 Route::get('/', [LandingPageController::class, 'LandingPage'])->name('LandingPage');
 Route::get('/DashboardSiswa', [DashboardSiswaController::class, 'DashboardSiswa'])->name('DashboardSiswa');
+use App\Http\Controllers\LoginController;
+
+
+Route::get('/', [LandingPageController::class, 'LandingPage'])->name('LandingPage');
+Route::get('/Login', [LoginController::class, 'Login'])->name('Login');
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 //Use App\Http\Controllers\HomeController;
 // Route::get('/', function () {
 //    return view('welcome');

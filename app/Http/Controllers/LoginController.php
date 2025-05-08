@@ -1,25 +1,33 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    public function index()
+    public function showLoginForm()
     {
-        return view('login');
+        return view('Login'); // Pastikan ada file login.blade.php di resources/views
     }
 
-    public function login(Request $request)
+    public function processLogin(Request $request)
     {
-        $username = $request->username;
-        $password = $request->password;
+        // Validasi input
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
 
-        if ($username == 'admin' && $password == 'admin') {
-            return view('welcome');
-        } else {
-            return view('login');
+        // Contoh login manual (bisa kamu ganti dengan query ke DB)
+        if ($request->email === 'admin@gmail.com' && $request->password === '123456') {
+            // Simpan ke session kalau mau
+            session(['user' => $request->email]);
+
+            // Redirect ke dashboard
+            return redirect('/DashboardSiswa');
         }
+
+        // Jika gagal
+        return back()->withErrors(['email' => 'Email atau password salah.']);
     }
 }
